@@ -30,34 +30,34 @@ public class AmazonShopping {
                   
         //Select the first 2 brands displayed in the left menu
         
-        WebElement checkbox1 = driver.findElement(By.xpath("//li[@aria-label = 'Safari']//input"));
+        WebElement checkbox1 = driver.findElement(By.xpath("//div[@id='brandsRefinements']//following::i"));
         driver.executeScript("arguments[0].click()", checkbox1);
         
-        WebElement checkbox2 = driver.findElement(By.xpath("//li[@aria-label = 'Skybags']//input"));
+        WebElement checkbox2 = driver.findElement(By.xpath("(//div[@id='brandsRefinements']//following::i)[2]"));
         driver.executeScript("arguments[0].click()", checkbox2);
         
      //   Actions actions1 = new Actions(driver);
     //    WebElement checkbox1 = driver.findElement(By.xpath("//li[@aria-label = 'Safari']//input"));
       //  actions1.moveToElement(checkbox1).click();
         
-      //  Actions actions2 = new Actions(driver);
-      //  WebElement checkbox2 = driver.findElement(By.xpath("//li[@aria-label = 'Skybags']//input"));
-      //  actions2.moveToElement(checkbox2).click();
+       // Actions actions2 = new Actions(driver);
+       //WebElement checkbox = driver.findElement(By.xpath("//li[@aria-label = 'Skybags']//input"));
+       //actions2.moveToElement(checkbox).click();
         
         //choose in the Sort dropdown Newest Arrivals
         driver.findElement(By.className("a-dropdown-label")).click();
         driver.findElement(By.linkText("Newest Arrivals")).click();
         
+        //Click the first result
+        driver.findElement(By.xpath("//div[@class='a-section aok-relative s-image-tall-aspect']//img")).click();
+        
         //Display of the first resulting bag
-        String firstResultDisplay = driver.findElement(By.xpath("(//h2[contains(@class,'a-size-mini s-line-clamp-1')]//span)[1]")).getText();
-        System.out.println("The first dispalyed bag details: "+firstResultDisplay);
         
-        String firstResultDisplay2 = driver.findElement(By.xpath("(//h2[contains(@class,'a-spacing-none')]//span)[1]")).getText();
-        System.out.println(firstResultDisplay2);
+        String productTitle = driver.findElement(By.xpath("//span[@id='productTitle']")).getText();
+        System.out.println("Product Name: "+productTitle);
         
-        String mrp = driver.findElement(By.xpath("")).getText();
-        System.out.println("MRP: "+ mrp);
-        
+        String price = driver.findElement(By.xpath("//span[@class='aok-offscreen']")).getText();
+        System.out.println("Price: "+price);
         
        String title = driver.getTitle();
        System.out.println("Title odf Current page: " + title);
